@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Slicer Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Mengimpor FFmpeg WebAssembly -->
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.0/dist/ffmpeg.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>✂️ Video Slicer Pro</h1>
+            <p>Potong video panjang menjadi klip pendek secara otomatis</p>
+        </header>
+
+        <main>
+            <div class="card upload-section">
+                <label for="video-upload" class="upload-btn">
+                    <span>Pilih Video</span>
+                    <input type="file" id="video-upload" accept="video/mp4, video/webm, video/quicktime">
+                </label>
+                <p id="file-name" class="file-name">Belum ada video yang dipilih</p>
+            </div>
+
+            <div id="settings-section" class="card settings-section hidden">
+                <h3>Pengaturan Pemotongan</h3>
+                <div class="info-box">
+                    <p>Durasi Total Video: <strong id="total-duration">00:00</strong></p>
+                </div>
+                
+                <div class="input-group">
+                    <label for="clip-duration">Durasi per klip (Detik):</label>
+                    <input type="number" id="clip-duration" min="1" value="60">
+                </div>
+
+                <div class="info-box highlight">
+                    <p>Video akan dipotong menjadi: <strong id="estimated-clips" class="accent-text">0 klip</strong></p>
+                </div>
+
+                <button id="process-btn" class="process-btn">Mulai Potong Video</button>
+            </div>
+
+            <div id="progress-section" class="card progress-section hidden">
+                <h3>Sedang Memproses...</h3>
+                <div class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <p id="progress-text">Menyiapkan mesin pemotong...</p>
+            </div>
+
+            <div id="result-section" class="card result-section hidden">
+                <h3>🎉 Hasil Potongan Siap Diunduh!</h3>
+                <div id="download-list" class="download-list">
+                    <!-- Tombol download akan muncul di sini -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
